@@ -1,0 +1,15 @@
+{
+  "name": "@ricochet-ltd/cloudformation-bootstrap",
+  "version": "0.0.1",
+  "description": "Get outputs from stacks to throw around CI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Craig Cooper",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "aws-sdk": "^2.678.0"
+  }
+}

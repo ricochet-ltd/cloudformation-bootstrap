@@ -1,0 +1,13 @@
+name: 'CloudFormation Bootstrap Action'
+description: 'Grab various params to use in GH Actions'
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
+inputs:
+  stacks:
+    description: >-
+      Comma separated list of stacks to get the outputs from. It will fail if any of them don't exist...
+    required: false
+runs:
+  using: 'node12'
+  main: 'index.js'
