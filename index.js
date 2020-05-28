@@ -8,16 +8,25 @@ async function run() {
         const branch = process.env.GITHUB_REF.split("/").pop();
         core.setOutput("branch", branch);
 
-        if(!stacks) stacks = "ci"
-        if(!stacks.includes("ci")) stacks = `ci,${stacks}`
+        if(!stacks) stacks = "base"
+        if(!stacks.includes("base")) stacks = `base,${stacks}`
+
+        const {Stacks} = await cloudformation.describeStacks().promise();
+
+        const outputs = Stacks.reduce((acc, el) => {
+            if(el.StackName.startsWith("base")) {
+              acc.base = acc.base.concat(el.Outputs);
+            } else {
+              acc[el.StackName] = el.Outputs
+            }
+
+            return acc;
+        }, {base:[]})
 
         for(const stack of stacks.split(",")) {
             core.info(`Getting outputs from ${stack.trim()}`);
-            const {Stacks: [{Outputs}]} = await cloudformation.describeStacks({
-                StackName: stack.trim()
-            }).promise();
 
-            for(const {OutputKey, OutputValue} of Outputs) {
+            for(const {OutputKey, OutputValue} of outputs[stack]) {
                 core.info(`Setting ${OutputKey} as output...`);
                 core.setOutput(OutputKey, OutputValue);
             }
