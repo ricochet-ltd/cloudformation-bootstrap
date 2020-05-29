@@ -5,7 +5,7 @@ const cloudformation = new AWS.CloudFormation({region: process.env.AWS_DEFAULT_R
 async function run() {
     try {
         let stacks = core.getInput("stacks" );
-        const BASE_STACK_NAME = core.getInput(BASE_STACK_NAME ) || "tros";
+        const BASE_STACK_NAME = core.getInput("BASE_STACK_NAME" ) || "tros";
         const branch = process.env.GITHUB_REF.split("/").pop();
 
         core.setOutput("branch", branch);
