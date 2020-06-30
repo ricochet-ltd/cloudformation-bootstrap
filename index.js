@@ -7,8 +7,10 @@ async function run() {
         let stacks = core.getInput("stacks" );
         const BASE_STACK_NAME = core.getInput("BASE_STACK_NAME" ) || "tros";
         const branch = process.env.GITHUB_REF.split("/").pop();
+        const environment = branch === "master" ? "production" :
 
         core.setOutput("branch", branch);
+        core.setOutput("environment", environment);
 
         if(!stacks) stacks = BASE_STACK_NAME
         if(!stacks.includes(BASE_STACK_NAME)) stacks = `${BASE_STACK_NAME},${stacks}`
