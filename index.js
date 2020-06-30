@@ -7,7 +7,7 @@ async function run() {
         let stacks = core.getInput("stacks" );
         const BASE_STACK_NAME = core.getInput("BASE_STACK_NAME" ) || "tros";
         const branch = process.env.GITHUB_REF.split("/").pop();
-        const environment = branch === "master" ? "production" :
+        const environment = (branch === "master") ? "production" : "staging";
 
         core.setOutput("branch", branch);
         core.setOutput("environment", environment);
