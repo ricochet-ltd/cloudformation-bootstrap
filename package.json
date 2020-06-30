@@ -1,6 +1,6 @@
 {
   "name": "@ricochet-ltd/cloudformation-bootstrap",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get outputs from stacks to throw around CI",
   "main": "index.js",
   "scripts": {
