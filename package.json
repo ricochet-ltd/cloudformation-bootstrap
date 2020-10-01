@@ -9,7 +9,7 @@
   "author": "Craig Cooper",
   "license": "UNLICENSED",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "aws-sdk": "^2.678.0"
   }
 }
